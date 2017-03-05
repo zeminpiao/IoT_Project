@@ -1,0 +1,33 @@
+<html>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='commission.css') }}">
+<head>
+  <title>commission</title>
+  <style>
+a:link, a:visited {
+    background-color: hotpink;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 35px;
+}
+
+
+a:hover, a:active {
+    background-color: red;
+}
+</style>
+</head>
+<body>
+  <h1 style="background-color: green;
+    font-size: 55px;
+    text-align: center;
+     color: white;">Building Application</h1>
+  <a style="margin-left: 480px;margin-top: 70px; margin-bottom: 45px;" href="{{ url_for('show_entries') }}">User Account</a>
+
+  <dt><a style="margin-left: 420px;margin-top: 15px; margin-bottom: 45px;"href="{{ url_for('show_entries2') }}">Identity and Binding</a></dt>
+
+</body>
+</html>
+

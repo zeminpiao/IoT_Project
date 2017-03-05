@@ -1,0 +1,68 @@
+{% extends "home.html" %}
+{% block body %}
+  {% if session.logged_in %}
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  
+    <form action="{{ url_for('maintenance') }}" method=post class=add-entry>
+      <dl>
+        <dt style="margin-left: 100px;"><mark style=" background-color: green; color: white;">UserID:</mark> 
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=40 value='Office-Worker-' name=userid>
+        <dt style="margin-left: 100px;"><mark style="background-color: green; color: white;">Name:</mark>
+        <dd><input style="margin-left: 60px;margin-bottom: 5px;" type=string size=40 name=name>
+        <dt style="margin-left: 100px;"><mark style=" background-color: green; color: white;">Email:</mark>
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=40 name=email>
+        <dt style="margin-left: 100px;"><mark style="background-color: green; color: white;">Username:</mark>
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=40 name=username>
+        <dt style="margin-left: 100px;"><mark style="background-color: green; color: white;">Password:</mark>
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=40 name=pass>
+        <dt style="margin-left: 100px;"><mark style=" background-color: green; color: white;">DeskNo.:</mark>
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=40 name=groups>
+        <dt style="margin-left: 100px;"><mark style=" background-color: green; color: white;">user1position.:</mark>
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=40 name=user1position>
+        <dt style="margin-left: 100px;"><mark style=" background-color: green; color: white;">user2position:</mark>
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=40 name=user2position>
+        <dt style="margin-left: 100px;"><mark style=" background-color: green; color: white;">user3position:</mark>
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=40 name=user3position>
+        <dd><input style="margin-left: 60px;margin-bottom: 10px; background-color: green; color: white;" type=submit value=Save>
+        <dd><a style="margin-left: 60px;" href="{{ url_for('sendtojobs') }}"><mark style="background-color: green; color: white;">Send all to broker</mark></a>
+        <a style="margin-left: 60px;" href="{{ url_for('commission') }}"><mark style="background-color: green; color: white;">Back to commission</mark></a>
+      </dl>
+    </form>
+
+    
+  {% endif %}
+  <ul class=entries>
+  {% if session.logged_in %}
+  <table border="1">
+  <tr>
+  <td style="color:white;">UserID</td>
+  <td style="color:white;">Name</td>
+  <td style="color:white;">Email</td>
+  <td style="color:white;">Username</td>
+  <td style="color:white;">Password</td>
+  <td style="color:white;">Desk</td>
+  <td style="color:white;">user1position</td>
+  <td style="color:white;">user2position</td>
+  <td style="color:white;">user3position</td>
+  </tr>
+  {% for entry in entries %}
+  <tr>  
+  <td style="color:white;">{{ entry.userid }}</td>  
+  <td style="color:white;">{{ entry.name }}</td>
+  <td style="color:white;">{{ entry.email }}</td>
+  <td style="color:white;">{{ entry.username }}</td>
+  <td style="color:white;">{{ entry.pass }}</td>
+  <td style="color:white;">{{ entry.groups }}</td>
+  <td style="color: white;">{{ entry.user1position }}</td>
+  <td style="color: white;">{{ entry.user2position }}</td>
+  <td style="color: white;">{{ entry.user3position }}</td>
+  </tr>
+  {% else %}
+    <li><em style="color: white;">No users yet</em>
+  {% endfor %}
+  </table>
+  {% endif %}
+  </ul>
+
+  
+{% endblock %}

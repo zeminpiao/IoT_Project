@@ -1,0 +1,24 @@
+<h1 style="background-color: green; margin-top: 50px;
+    font-size: 55px;
+    text-align: center;
+     color: white;">Building Application</h1>
+<h1 style="margin-top: 60px; text-align: center; font-size: 40px;">Choose a Light Device :)</h1>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='commission.css') }}">
+
+
+{% if session.logged_in %}
+
+<form action="{{ url_for('senduri') }}" method=post class=add-entry>
+      
+<select style="margin-left: 480px; width: 300px; font-size: 30px;" name='LightID'>
+  {% for entry in entries %}
+  <option value="{{ entry.LightID }}">{{ entry.LightID }}</option>
+  {% endfor %}
+</select>
+  <dd style="margin-left: 580px; margin-bottom: 40px; margin-top: 30px;"><input style="background-color: green;color: white; width: 80px; font-size: 20px;" type=submit value=Save>
+</form>
+<dd><a style="margin-left: 490px; background-color: white; font-size: 25px;" href="{{ url_for('commission') }}">Back to commission</a>
+
+<dd><a style="margin-left: 490px; background-color: white; font-size: 25px;" href="{{ url_for('senturi') }}">send uri</a>
+{% endif %}
+

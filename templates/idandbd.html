@@ -1,0 +1,66 @@
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='commission.css') }}">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+<h1 style="background-color: green;
+    font-size: 45px;
+    text-align: center;
+     color: white;">Building Application</h1>
+
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_entry2') }}" method=post class=add-entry>
+      <dl>
+        <dt style="margin-left: 100px;"><mark style=" background-color: green; color: white;">LightID:</mark>
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=30 name=LightID>
+        <dt style="margin-left: 100px;"><mark style=" background-color: green; color: white;">Position:</mark>
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=30 name=Position>
+        <dt style="margin-left: 100px;"><mark style=" background-color: green; color: white;">GroupNumber:</mark>
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=30 name=GroupNumber>
+        <dt style="margin-left: 100px;"><mark style=" background-color: green; color: white;">RoomID:</mark>
+        <dd><input style="margin-left: 60px; margin-bottom: 5px;" type=string size=30 name=RoomID>
+        <dd><input style="margin-left: 60px;margin-bottom: 10px; background-color: green; color: white;" type=submit value=Save>
+        <dd><a style="margin-left: 60px; background-color: green; color: white; font-size: 20px;" href="{{ url_for('commission') }}">Back to commission</a>
+      </dl>
+    </form>
+
+    
+  {% endif %}
+
+ 
+
+  <ul class=entries2>
+  {% if session.logged_in %}
+  <table style="margin-left: 60px;" border="1">
+  <tr style="color: white;background-color: green;">
+  <td>LightID</td>
+  </tr>
+  {% for entry in entries2 %}
+  <tr style="color: black;background-color: lightgrey;">  
+  <td>{{ entry.LightID }}</td>
+  </tr>
+  {% endfor %}
+  </table>
+  {% endif %}
+  </ul>
+
+
+  <ul class=entries>
+  {% if session.logged_in %}
+  <table style="margin-left: 60px;" border="1">
+  <tr style="color: white;background-color: green;">
+  <td>LightID</td>
+  <td>Position</td>
+  <td>GroupNumber</td>
+  <td>RoomID</td>
+  </tr>
+  {% for entry in entries %}
+  <tr style="color: black;background-color: lightgrey;">
+  <td>{{ entry.LightID }}</td>
+  <td>{{ entry.Position }}</td>
+  <td>{{ entry.GroupNumber }}</td>
+  <td>{{ entry.RoomID }}</td>
+  </tr>
+  {% endfor %}
+  </table>
+  {% endif %}
+  </ul>
+

@@ -1,0 +1,14 @@
+THIS IS A README FILE, GUIDING HOW TO USE THIS WEB AND CLOUD APPLICATION.
+
+INSTALLATION:
+
+1. To properly use this application, Flask library is required. Use pip to install flask in linux.
+What's more, use pip to install Sqlite3, use pip to install requests.
+
+2. If you want to run this project on localhost mode, which means other computer will not visit this website through your IP address, please switch to the last line app.py, change "app.run(host='0.0.0.0')" into "app.run()".
+
+3. To run this project, firstly open a terminal, cd to the folder which contains the app.py, then use python to run app.py. If you run this project on localhost mode, open the browser, type the url "127.0.0.1:5000", press Enter, then you can see the beautiful website:) If you run this project publicly to other users, use "ifconfig" command on your own terminal to see your IP address then type the url "{your IP address}:5000" to visit this website.
+
+
+
+

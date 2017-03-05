@@ -1,0 +1,87 @@
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='commission.css') }}">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <head>
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: green;
+    color: white;
+}
+
+
+</style>
+</head>
+<title>Get usage time</title>
+<h1 style="background-color: green;
+    font-size: 39px;
+    text-align: center;
+     color: white;">Building Application</h1>
+{% if session.logged_in %}
+    <form action="{{ url_for('getusage') }}" method=post class=add-entry>
+      <dl>
+<dt style="margin-left: 300px; margin-top: 50px; font-weight: bold;font-size: 20px;">LightID:         
+<select style="width: 150px; font-size: 20px; margin-right: 15px;" name='LightID'>
+  <option value="null" selected>null</option>
+  {% for entry in entry_Light %}
+  <option value="{{ entry.LightID }}">{{ entry.LightID }}</option>
+  {% endfor %}
+</select>
+SensorID:         
+<select style="width: 150px; font-size: 20px; margin-right: 15px;" name='SensorID'>
+  <option value="null" selected>null</option>
+  {% for entry in entry_Sensor %}
+  <option value="{{ entry.SensorID }}">{{ entry.SensorID }}</option>
+  {% endfor %}
+</select>
+        <dt style="margin-top: 25px; margin-left: 300px; font-size: 20px;font-weight: bold;" >Start time:
+        <input type=integer size=30 name=start_time>
+        <dt style="margin-top: 25px; margin-left: 308px; font-size: 20px;font-weight: bold;" >End Time:
+        <input type=integer size=30 name=end_time>
+        <dd style="margin-top: 30px;margin-left: 530px; margin-bottom: 50px;"><input style="background-color: green;color: white; width: 80px; font-size: 20px;" type=submit value=Save>
+      </dl>
+    </form>
+
+
+  
+<table border="1">
+  <tr>
+  <th>LightID</th>
+  <th>SensorID</th>
+  <th>User1Time</th>
+  <th>User2Time</th>
+  <th>User3Time</th>
+  <th>DimTime</th>
+  <th>OffTime</th>
+  <th>FreeTime</th>
+  <th>OccupiedTime</th>
+  </tr>
+
+  <tr>  
+  <td>{{ entries2.LightID }}</td>
+  <td>{{ entries2.SensorID }}</td>
+  <td>{{ entries3.ttUser1 }}</td>
+  <td>{{ entries3.ttUser2 }}</td>
+  <td>{{ entries3.ttUser3 }}</td>
+  <td>{{ entries3.ttDim }}</td>
+  <td>{{ entries3.ttOff }}</td>
+  <td>{{ entries3.ttsFree }}</td>
+  <td>{{ entries3.ttsOccupied }}</td>
+
+  
+  </table>
+  <a style="margin-left: 480px; font-size: 20px; background-color: white;" href="{{ url_for('getusagesend') }}">Get Usage Time</a>  
+
+{% endif %}
+

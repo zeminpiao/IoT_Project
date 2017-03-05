@@ -1,0 +1,39 @@
+<!doctype html>
+<title>building manager application</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style12.css') }}">
+<div class=page>
+  <h1>Building Application</h1>
+  <div class=metanav>
+  {% if not session.logged_in %}
+    <a href="{{ url_for('login') }}">log in</a>
+  {% else %}
+  <ul>
+    <li><a class="active" href="{{ url_for('operating') }}">Operating</a></li>
+    <li><a href="{{ url_for('commission') }}">Commission</a></li>
+    <li><a href="{{ url_for('maintenance') }}">Maintenance</a></li>
+    <li><a href="{{ url_for('state') }}">State</a></li>
+    <li><a href="{{ url_for('ownership_nouserid') }}">OwnershipCreate</a></li>
+    <li><a href="{{ url_for('senduri') }}">DirectControl</a></li>
+    <li><a href="{{ url_for('getusage') }}">UsageTime</a></li>
+    {% if flag_deployment %}
+    <li><a href="{{ url_for('centralize') }}">Centralize</a></li>
+    {% else %}
+    <li><a href="{{ url_for('distribute') }}">Distribute</a></li>
+    {% endif %}
+    <li><a href="{{ url_for('logout') }}">Log out</a></li>
+    </ul>
+  {% endif %}
+  </div>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+
+
+  
+
+  
+
+
+  
+

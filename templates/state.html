@@ -1,0 +1,67 @@
+{% extends "home.html" %}
+{% block body %}
+  {% if session.logged_in %}
+  <head>
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+</style>
+</head>
+  <table border="1">
+  <tr>
+  <th>Light Color</th>
+  <th>Light ID</th>
+  <th>Light State</th>
+  <th>User ID</th>
+  <th>User Type</th>
+  <th>Low Light</th>
+  </tr>
+  {% for entry in entries %}
+  <tr>  
+  <td>{{ entry.LightColor }}</td>
+  <td>{{ entry.LightID }}</td>  
+  <td>{{ entry.LightState }}</td>
+  <td>{{ entry.UserID }}</td>
+  <td>{{ entry.UserType }}</td>
+  <td>{{ entry.LowLight }}</td>
+  </tr>
+  {% else %}
+    <li style="list-style-type: none ; margin-top: 15px; margin-bottom: 15px;"><em style="font-size: 30px;">No device yet</em>
+  {% endfor %}
+  </table>
+  
+    <table border="1">
+  <tr>
+  <th>Sensor State</th>
+  <th>Sensor ID</th>
+  </tr>
+  {% for entry in entries2 %}
+  <tr>  
+  <td>{{ entry.SensorState }}</td>
+  <td>{{ entry.SensorID }}</td>  
+  </tr>
+  {% else %}
+    <li style="list-style-type: none ; margin-top: 15px; margin-bottom: 15px;"><em style="font-size: 30px;">No Sensors yet</em>
+  {% endfor %}
+  </table>
+      
+  {% endif %}
+  </ul>
+{% endblock %}

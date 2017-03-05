@@ -1,0 +1,10 @@
+<title>Take Control</title>
+
+<form action="{{ url_for('takingcontrol') }}" method=post class=add-entry>
+      <dl>
+        <dt>Input String:
+        <dd><input type=string size=30 name=triggerstring>
+        <dd><input type=submit value=Save>
+        <dd><a href="{{ url_for('commission') }}">Back to commission</a>
+      </dl>
+</form>

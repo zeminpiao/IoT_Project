@@ -1,0 +1,15 @@
+{% extends "home.html" %}
+{% block body %}
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <h2 style="text-align: center;font-size: 50px; margin-bottom: 40px;margin-top: 50px;">Please Login :)</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <form action="{{ url_for('login') }}" method=post>
+    <dl>
+      <dt style="margin-left: 310px;font-size: 20px; margin-bottom: 20px;"><mark style="background-color: green; color: white;">Username:</mark>
+      <input type=text size="28" name=username>
+      <dt style="margin-left: 320px;font-size: 20px; margin-bottom: 40px;"><mark style="background-color: green; color: white;">Password:</mark>
+      <input type=password size="28" name=password>
+      <dd><input style="margin-left: 450px; background-color: green; color: white; font-size: 23px;" type=submit size=30 value=Login>
+    </dl>
+  </form>
+{% endblock %}
